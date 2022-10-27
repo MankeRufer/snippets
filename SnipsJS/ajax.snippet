@@ -1,0 +1,36 @@
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ajax</Title>
+    <Author>Furkan Emre</Author>
+    <Shortcut>ajax</Shortcut>
+    <Description>ajax çağrısı each komutlu</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Code Language="JavaScript"><![CDATA[
+
+            $.ajax({
+                type: "post",
+                url: '/User/GetCityList',
+                data: { CountryID: CountryID },
+                success: function (data) {
+                    console.log(data);
+                    $selected$$end$
+                    //DÖNGÜ İSTENİRSE AŞAĞIDAKİ KULLANILIR
+                    $.each(data, function (index, City) {
+                        $('#ELEMENT_ID').append($('<option/>', {
+                            value: City.CityID,
+                            text: City.CityName
+                        }));
+                    });
+                }
+            });
+    
+
+
+]]></Code>
+  </Snippet>
+</CodeSnippet>

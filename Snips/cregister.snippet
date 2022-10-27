@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>cregister</Title>
+			<Shortcut>cregister</Shortcut>
+			<Description>Kayıt ol sınıfı için temel değişkenler</Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>className</ID>
+					<Default>className</Default>
+					<ToolTip>className</ToolTip>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+    public class $className$
+    {
+        public int ID { get; set; } 
+        public string Username { get; set; } //Kullanıcı Adı
+        public string Password { get; set; } //Şifre
+        public string Name { get; set; } //Adı
+        public string Surname { get; set; } // Soyadı
+        public int Age { get; set; } // Yaş
+        public string Gender { get; set; } // Cinsiyet
+        public string DriverLicense { get; set; } // Cinsiyet
+        public string Image { get; set; } // Resim
+        public string City { get; set; } // Yaşadığı / Doğduğu şehir
+        public string UniqueKey { get; set; }  //TC Kimlik No
+        public DateTime BirthDate { get; set; } //Doğum tarihi
+        public int Status { get; set; } //Üye Aktifliği 1-> Aktif 0-> Pasif
+        public int isDelete { get; set; }   //1-> Silinmiş  0-> Silinmemiş
+        public DateTime InsertedDate { get; set; } //Sisteme kayıt tarihi
+
+
+        /*OLUŞTURMA*/
+
+        //$className$ rm = new $className$();
+        //rm.BirthDate = DateTime.Now;
+        //rm.Name = "Furkan";
+        //rm.Surname = "Emre";
+        //rm.Age = "29";
+        //rm.Gender = "Erkek";
+        //rm.DriverLicense = "B";
+        //rm.Image = "furkan.png";
+        //rm.City = "İstanbul";
+        //rm.Status = 1;
+        //rm.isDelete = 0;
+        //rm.InsertedDate = DateTime.Now;
+        //rm.Username = "furkanemre571";
+        //rm.Password = "Hz571M";
+        //rm.UniqueKey = "12345678900";
+        $selected$ $end$
+
+    }
+
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

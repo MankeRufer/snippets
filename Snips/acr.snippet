@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>acr</Title>
+			<Shortcut>acr</Shortcut>
+			<Description>ActionResult Return Redirect</Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>actionName</ID>
+					<Default>RedirectAction</Default>
+					<ToolTip>RedirectAction</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>RedirectAction</ID>
+					<Default>RedirectAction</Default>
+					<ToolTip>RedirectAction</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>controlName</ID>
+					<Default>ControllerName</Default>
+					<ToolTip>ControllerName</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>session</ID>
+					<Default>"1"</Default>
+					<ToolTip>Max length</ToolTip>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+				public ActionResult $actionName$()
+				        {
+				        Session["Statu"] = $session$; 
+				        $selected$ $end$
+                            return RedirectToAction("$RedirectAction$", "$controlName$");
+				        }
+
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

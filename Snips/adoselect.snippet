@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>adoselect</Title>
+			<Shortcut>adoselect</Shortcut>
+			<Description>Ado için Select komutu</Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			
+			<Code Language="csharp"><![CDATA[
+              using (SqlConnection con = new SqlConnection("CONNECTION_STRING"))
+            {
+                var sqlCommand = new SqlCommand("SELECT * FROM TABLE_NAME where EndDate >= @Date and StartDate <= @date", con);
+                sqlCommand.Parameters.Add("@Date", SqlDbType.DateTime).Value = DateTime.Now;
+                con.Open();
+                SqlDataReader read = sqlCommand.ExecuteReader();
+
+                if (!read.HasRows)
+                {
+                    con.Close();
+                }
+                else
+                {
+                    while (read.Read())
+                    {
+                        var responseText = read["ID"].ToString();
+                        var responseID = Convert.ToInt32(read["ID"]);
+                    }
+                }
+                con.Close();
+            }
+            $selected$ $end$
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

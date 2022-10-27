@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>adoinsert</Title>
+			<Shortcut>adoinsert</Shortcut>
+			<Description>Ado için insert komutu</Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="csharp"><![CDATA[
+                    SqlConnection con = new SqlConnection("CONNECTION_STRING");
+                    con.Open();
+                    string insertQuery = "INSERT INTO TABLE_NAME(Params1,Params2,Params3) VALUES(@Params,1,@getDate)";
+                    SqlCommand cmdI = new SqlCommand(insertQuery, con);
+                    cmdI.Parameters.Add("@getDate", SqlDbType.DateTime).Value = DateTime.Now;
+                    cmdI.Parameters.Add("@Params", SqlDbType.NVarChar).Value = "Furkan";
+                    cmdI.CommandType = CommandType.Text;
+                    cmdI.ExecuteNonQuery();
+                    con.Close();
+            $selected$ $end$
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

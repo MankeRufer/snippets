@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>curr</Title>
+			<Shortcut>curr</Shortcut>
+			<Description>Güncel döviz kurlarını çekip session'a atar</Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="csharp"><![CDATA[
+            //using System.Xml;
+            XmlDocument xmlVerisi = new XmlDocument();
+            xmlVerisi.Load("http://www.tcmb.gov.tr/kurlar/today.xml");
+
+            Session["DolarPrice"] = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/BanknoteSelling", "USD")).InnerText.Replace('.', ','));
+            Session["EuroPrice"] = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/BanknoteSelling", "EUR")).InnerText.Replace('.', ','));
+            $selected$ $end$
+
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

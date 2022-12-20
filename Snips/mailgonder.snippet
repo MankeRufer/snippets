@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>mailgonder</Title>
+			<Shortcut>mailgonder</Shortcut>
+			<Description>Mail Gonderme </Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="csharp"><![CDATA[
+                #region Mail Gönder
+                MailMessage mesaj = new MailMessage();
+                mesaj.From = new MailAddress("kim_tarafından_gönderilecek@evet.tarafından.com");
+                mesaj.To.Add("gönderilecek_mail_adresi@mail.com");
+                mesaj.Subject = "Mail Başlığı";
+                mesaj.IsBodyHtml = true;
+                mesaj.Body = "Mail_iceriği $selected$ $end$";
+                SmtpClient rc = new SmtpClient();
+                // Gönderenin eposta giriş bilgileri
+                rc.Credentials = new System.Net.NetworkCredential("kim_tarafından_gönderilecek@evet.tarafından.com", "mail_sifresi");
+                rc.Port = 587;
+                rc.Host = "mail_sunucusu";
+                rc.EnableSsl = true;
+                object userState = mesaj;
+                rc.SendAsync(mesaj, (object)mesaj);
+                #endregion
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

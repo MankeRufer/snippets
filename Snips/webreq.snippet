@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>webreq</Title>
+			<Shortcut>webreq</Shortcut>
+			<Description>WebRequest Methodu</Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>params1</ID>
+					<Default>parametre_adi</Default>
+					<ToolTip>parametre_adi</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>params2</ID>
+					<Default>parametre_adi</Default>
+					<ToolTip>parametre_adi</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>url</ID>
+					<Default>URL_ADRESI</Default>
+					<ToolTip>URL_ADRESI</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>session</ID>
+					<Default>"1"</Default>
+					<ToolTip>Max length</ToolTip>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+				string myParameters = "params1=" + $params1$ + "&params2=" + $params2$;
+                string responseFromServer = ""; 
+                WebRequest request = WebRequest.Create("$url$" + "?" + myParameters);
+                request.Method = "POST";
+                string postData = "This is a test that posts this string to a Web server.";
+                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(postData);
+
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = byteArray.Length;
+
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+
+                WebResponse response = request.GetResponse();
+
+                using (dataStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(dataStream);
+                    responseFromServer = reader.ReadToEnd();
+
+                }
+            $selected$ $end$
+
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>coreacv</Title>
+			<Shortcut>coreacv</Shortcut>
+			<Description>Core için IActionResult Return View </Description>
+			<Author>Furkan EMRE</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>actionName</ID>
+					<Default>ActionName</Default>
+					<ToolTip>ActionName</ToolTip>
+				</Literal>
+				<Literal>
+					<ID>session</ID>
+					<Default>"1"</Default>
+					<ToolTip>Max length</ToolTip>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+				public IActionResult $actionName$()
+				        {
+				        Session["Statu"] = $session$; 
+				        $selected$ $end$
+                            return View();
+				        }
+
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
